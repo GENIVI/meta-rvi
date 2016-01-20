@@ -1,0 +1,11 @@
+The sources for the packages comprising the images shipped with this
+BSP can be found at the following location:
+
+https://github.com/PDXostc/rvi_core
+
+The metadata used to generate the images shipped with this layer, in
+addition to the code contained in this layer, can be found at the
+following location:
+
+https://github.com/PDXostc/rvi_yocto
+

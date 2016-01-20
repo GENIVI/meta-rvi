@@ -1,0 +1,95 @@
+This README file contains information on building the meta-rvi
+layer. For convenience there are image targets in recipes-core/images
+that illustrate how to build images with RVI.
+Please see the corresponding sections below for details.
+
+
+Dependencies
+============
+
+This layer depends on:
+
+  URI: git://git.openembedded.org/bitbake
+  branch: master
+
+  URI: git://git.openembedded.org/openembedded-core
+  layers: meta
+  branch: master
+
+
+Patches
+=======
+
+Please submit any patches against this BSP to the Yocto mailing list
+(yocto@yoctoproject.org) and cc: the maintainer:
+
+Maintainer: Rudolf Streif <rstreif@jaguarlandrover.com>
+
+
+Table of Contents
+=================
+
+  I. Building the meta-rvi layer
+ II. Booting the images in /binary
+
+
+I. Building the meta-rvi layer
+==============================
+
+Remtore Vehicle Interaction (RVI) is a reference implementation for
+infrastructure that drives next generation connected vehicle services.
+
+RVI provides peer-to-peer based provisioning, authentication, authorization,
+discovery and invocation between services running inside a vehicle, on
+mobile devices, in the cloud, and more.
+
+* Peer-to-Peer
+  Internet connection is not required for two devices to exchange services.
+
+* Provisioning
+  Add, delete, and modify service and network nodes dynamically.
+
+* Authenticatin and Authorization
+  Verify that a service is who it claims to be and has the right to invoke
+  another service.
+
+* Discovery
+  Dynamically discover services on distributed nodes.
+
+* Invocation
+  Invoke services on remote nodes over reliable as well as transient and
+  unreliable data channels.
+
+
+In order to build an image with RVI support for a given release, you
+need to download the corresponding layer from the Jaguar Land Rover
+Github repository: https://github.com/PDXostc/rvi_yocto.
+
+Having done that at the top-level of your yocto build tree, you can build an
+image with RVI support by adding the location of the meta-rvi
+layer to bblayers.conf, along with any other layers needed (to access
+common metadata shared between layers) e.g.:
+
+  yocto/meta-xxxx \
+  /meta-rvi \
+
+RVI should build for any machine. RVI uses Erlang for which recipes are included
+with meta-rvi.
+
+You should then be able to build an RVI-enabled image as such:
+
+  $ source oe-init-build-env
+  $ bitbake rvi-image-base
+
+At the end of a successful build, you should have a live image that
+you can boot from a USB flash drive or inside of Qemu, depending on your
+machine choice).
+
+
+II. Using RVI
+=============
+
+RVI is middleware. To use it, you will need applications that support RVI
+by registering services and consuming services. Please refer to the RVI
+documentation for details.
+
