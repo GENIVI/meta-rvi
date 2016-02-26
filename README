@@ -16,11 +16,14 @@ This layer depends on:
   layers: meta
   branch: master
 
+  URI: https://github.com/joaohf/meta-erlang
+  branch: master
+
 
 Patches
 =======
 
-Please submit any patches against this BSP to the Yocto mailing list
+Please submit any patches against this layer to the Yocto mailing list
 (yocto@yoctoproject.org) and cc: the maintainer:
 
 Maintainer: Rudolf Streif <rstreif@jaguarlandrover.com>
@@ -29,8 +32,8 @@ Maintainer: Rudolf Streif <rstreif@jaguarlandrover.com>
 Table of Contents
 =================
 
-  I. Building the meta-rvi layer
- II. Booting the images in /binary
+  I. Building with the meta-rvi layer
+ II. Using RVI
 
 
 I. Building the meta-rvi layer
@@ -63,33 +66,38 @@ mobile devices, in the cloud, and more.
 
 In order to build an image with RVI support for a given release, you
 need to download the corresponding layer from the Jaguar Land Rover
-Github repository: https://github.com/PDXostc/rvi_yocto.
+Github repository: https://github.com/PDXostc/meta-rvi
 
 Having done that at the top-level of your yocto build tree, you can build an
 image with RVI support by adding the location of the meta-rvi
 layer to bblayers.conf, along with any other layers needed (to access
 common metadata shared between layers) e.g.:
 
-  yocto/meta-xxxx \
-  /meta-rvi \
+BBLAYERS ?= " \
+  <path-to>/poky/meta \
+  <path-to>/meta-erlang \
+  <path-to>/meta-rvi \
+  "
 
-RVI should build for any machine. RVI uses Erlang for which recipes are included
-with meta-rvi.
+You may, of course, include additional layers for BSP and more.
+
+RVI should build for any machine. RVI uses Erlang, hence the dependency on the
+meta-erlang layer.
 
 You should then be able to build an RVI-enabled image as such:
 
-  $ source oe-init-build-env
+  $ source oe-init-build-env rvi-build
   $ bitbake rvi-image-base
 
 At the end of a successful build, you should have a live image that
 you can boot from a USB flash drive or inside of Qemu, depending on your
-machine choice).
+machine choice.
 
 
 II. Using RVI
 =============
 
-RVI is middleware. To use it, you will need applications that support RVI
+RVI is middleware. To use it, you need applications that support RVI
 by registering services and consuming services. Please refer to the RVI
 documentation for details.
 
