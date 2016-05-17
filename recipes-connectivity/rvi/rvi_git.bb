@@ -1,6 +1,6 @@
 require rvi.inc
 
-SRC_URI = "git://github.com/PDXostc/rvi_core;branch=develop;name=rvi;protocol=https"
+SRC_URI = "git://github.com/GENIVI/rvi_core;branch=develop;name=rvi;protocol=https"
 SRCREV_rvi = "${AUTOREV}"
 
 PV = "0.5.0+git${SRCPV}"
