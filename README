@@ -39,7 +39,7 @@ Table of Contents
 I. Building the meta-rvi layer
 ==============================
 
-Remtore Vehicle Interaction (RVI) is a reference implementation for
+Remote Vehicle Interaction (RVI) is a reference implementation for
 infrastructure that drives next generation connected vehicle services.
 
 RVI provides peer-to-peer based provisioning, authentication, authorization,
