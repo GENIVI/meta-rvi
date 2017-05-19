@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "key":  "/etc/rvi/keys/insecure_device_key.pem",
+    "cert": "/etc/rvi/certificates/insecure_device_cert.crt",
+    "id": "genivi.org/client/bbfbb478-d628-480a-8528-cff40d73678f"
+  },
+  "ca": {
+    "cert": "/etc/rvi/certificates/insecure_root_cert.crt",
+    "dir":  "/etc/rvi/certificates"
+  },
+  "creddir": "/etc/rvi/credentials"
+}
