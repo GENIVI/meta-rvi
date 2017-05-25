@@ -11,6 +11,6 @@ SRC_URI = "git://github.com/benmcollins/libjwt.git;protocol=https"
 PROVIDES = "libjwt" 
 
 PV = "0.1+git${SRCPV}"
-SRCREV = "${AUTOREV}"
+SRCREV = "9b608c445295ee76b2b045f4ea6de1378ca6add2"
 
 S = "${WORKDIR}/git"
