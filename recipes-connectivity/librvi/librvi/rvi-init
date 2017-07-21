@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get node ID value from RVI configuration file
+ID=$(cat /etc/rvi/conf.json | sed -n 's_"id": "genivi.org/client/__p' | sed -n 's_"__p')
+
+# Test whether the node ID is the default value
+if [ $ID == "RVI_NODE_ID" ];
+then
+  # Generate a new uuid and set the configuration file, then echo it to stdout
+  ID=$(cat /proc/sys/kernel/random/uuid)
+  sed -i.bak.$(date +%s) "s/RVI_NODE_ID/$ID/" /etc/rvi/conf.json
+  echo $ID;
+else
+  # Just echo the uuid to stdout
+  echo "$ID";
+fi
