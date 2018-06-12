@@ -37,7 +37,7 @@ do_compile() {
         oe_runmake escript
 }
 
-RVI_DIR = "/opt/rvi_core"
+RVI_DIR = "/usr/share/rvi_core"
 
 FILES_RVI = "${RVI_DIR}/*"
 FILES_${PN} += "${FILES_RVI}"
@@ -51,9 +51,9 @@ do_install() {
 	chown -R root:root ${D}${RVI_DIR}
 
 	# install RVI default configuration file
-	install -d ${D}${sysconfdir}/opt/rvi/
-	install -m 0644 ./priv/config/rvi_yocto.config ${D}${sysconfdir}/opt/rvi/rvi.config
-    
+	install -d ${D}${sysconfdir}/rvi/
+	install -m 0644 ./priv/config/rvi_yocto.config ${D}${sysconfdir}/rvi/rvi.config
+
 	# install startup scripts
 	install -d ${D}${sysconfdir}/init.d/
 	install -m 0755 yocto_template/rvi.init ${D}${sysconfdir}/init.d/rvi
@@ -63,7 +63,7 @@ do_install() {
 }
 
 pkg_postinst_${PN} () {
-#!/bin/sh -e   
+#!/bin/sh -e
 if test -z "$D"; then
    # actions to carry out on the device
    # set RVI device ID
